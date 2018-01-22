@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chattr</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h1>Chattr</h1>
+
+    <hr />
+
+    <ul class="chattr__navigation">
+      <% if user_signed_in? %>
+        <li class="chattr__navigation-item">
+          <%= link_to("Dashboard", :controller => :dashboard) %>
+        </li>
+        <li class="chattr__navigation-item">
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+        </li>
+      <% else %>
+        <li class="chattr__navigation-item">
+          <%= link_to("Home", :controller => "/home") %>
+        </li>
+        <li class="chattr__navigation-item">
+          <%= link_to('Login', new_user_session_path)  %>  
+        </li>
+      <% end %>
+    </ul>
+  
+     <hr />
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <hr />
+
+    <h6>&copy; Chattr 2018</h6>
+  </body>
+</html>

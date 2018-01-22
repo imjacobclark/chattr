@@ -1,0 +1,10 @@
+<p>Hello <%= current_user.first_name %>, welcome to your dashboard.</p>
+<h2>People you can chat to:</h2>
+
+<ul>
+    <% User.all.each do |user| %>
+        <li>
+            <%= link_to "#{user.first_name} #{user.last_name}", :controller => :profile, :action => :user, id: user %>
+        </li>
+    <% end %>
+</ul>
