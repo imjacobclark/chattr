@@ -7,7 +7,9 @@
 <h3>Messages</h3>
 
 <ul>
-    <li></li>
+    <% @messages.each do |message| %>
+        <li><%= message.body %> <%= message.sender.id %></li>
+    <% end %>
 </ul>
 
 <hr />
